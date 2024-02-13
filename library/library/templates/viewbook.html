@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Library Management System</title>
+    <style media="screen">
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Style for the table */
+        table.redTable {
+            border: 2px solid #6c757d;
+            background-color: #F0F8FF;
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table.redTable td, table.redTable th {
+            border: 1px solid #6c757d;
+            padding: 8px 10px;
+        }
+
+        table.redTable tbody td {
+            font-size: 15px;
+        }
+
+        table.redTable tr:nth-child(even) {
+            background: #B0C4DE;
+        }
+
+        table.redTable thead {
+            background: #6c757d;
+            color: #FFFFFF;
+        }
+
+        table.redTable thead th {
+            font-size: 16px;
+            font-weight: bold;
+            border-left: 2px solid #343a40;
+        }
+
+        table.redTable tfoot {
+            background: #A40808;
+            color: #FFFFFF;
+        }
+
+        /* Style for the page title */
+        h3 {
+            font-size: 30px;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Style for the footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbaradmin.html" %}
+    <br>
+    <br>
+    <h3 class="p-3 mb-2 text-black" style="font-size: 50px; text-align:center;">Available Books in Library</h3>
+    {% if books %}
+    <table class="redTable ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Edition</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.genre }}</td>
+                <td>{{ book.edition }}th edition</td>
+                 </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h1>No books available</h1>
+    {% endif %}
+
+    <br><br><br><br><br><br><br><br><br>
+    {% include "footer.html" %}
+</body>
+</html>
